@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf4omirjfnkkm"]
+[gd_scene load_steps=3 format=3 uid="uid://cf4omirjfnkkm"]
 
 [ext_resource type="PackedScene" uid="uid://tlcwbicp8jm0" path="res://scenes/player.tscn" id="1_uhjjb"]
+[ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/tile_map.tscn" id="2_b3mux"]
 
 [node name="TestEnvironment" type="Node2D"]
 
@@ -10,9 +11,5 @@
 position = Vector2(-1, 0)
 position_smoothing_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -589.0
-offset_top = -326.0
-offset_right = 578.0
-offset_bottom = 325.0
+[node name="Node2D" parent="." instance=ExtResource("2_b3mux")]
+position = Vector2(139.78247, 80.83679)
