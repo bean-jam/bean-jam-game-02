@@ -14,5 +14,6 @@ func _physics_process(delta: float) -> void:
 	# Multiply that vector by the speed you want to move
 	velocity = input_vector * SPEED
 	
+
 	# Move and slide multiplies by delta internally
 	move_and_slide()
