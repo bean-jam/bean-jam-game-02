@@ -1,5 +1,5 @@
 extends Area2D
-class_name Hitbox
+class_name HitboxComponent
 
 # Hitbox attaches to weapons and attacks to deal damage to entities when 
 # it overlaps with a Hurtbox
@@ -16,5 +16,5 @@ func setup(source: BaseEntity, base_damage: int) -> void:
 # Use different collision layers in the inspector to ensure enemies
 # don't cause damage to each other. Collision layers have been named so hover 
 # over the numbers to see the names.
-func _on_area_entered(area: Hurtbox) -> void:
+func _on_area_entered(area: HurtboxComponent) -> void:
 	area.take_hit(damage, source_entity)

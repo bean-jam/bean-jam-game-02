@@ -1,7 +1,7 @@
-extends Node
-class_name Hurtbox 
+extends Area2D
+class_name HurtboxComponent
 
-@export var health: Health
+@export var health: HealthComponent
 
 # The error means that the Health node in the entity scene hasn't been assigned
 # in the inspector. Drag and drop the health node into the health section 

@@ -5,8 +5,8 @@ class_name BaseEntity
 var move_input: Vector2 = Vector2.ZERO
 
 # BaseEntities need Stats and Health Nodes as children
-@onready var stats = $Stats
-@onready var health = $Health
+@onready var stats = $StatsComponent
+@onready var health = $HealthComponent
 
 func _physics_process(delta: float) -> void:
 	velocity = move_input * stats.move_speed
