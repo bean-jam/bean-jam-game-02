@@ -1,5 +1,5 @@
 extends Node
-class_name Stats
+class_name StatsComponent
 
 # Base stats can be adjusted per BaseEntity instance in the inspector
 @export var base_move_speed: float = 100.0

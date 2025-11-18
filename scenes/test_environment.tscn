@@ -1,16 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf4omirjfnkkm"]
 
-[ext_resource type="PackedScene" uid="uid://tlcwbicp8jm0" path="res://scenes/player.tscn" id="1_uhjjb"]
+[ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/player.tscn" id="1_uhjjb"]
 [ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/tile_map.tscn" id="2_b3mux"]
 
 [node name="TestEnvironment" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_uhjjb")]
-position = Vector2(-1, -1)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-1, 0)
-position_smoothing_enabled = true
-
-[node name="Node2D" parent="." instance=ExtResource("2_b3mux")]
+[node name="TileMap" parent="." instance=ExtResource("2_b3mux")]
 position = Vector2(139.78247, 80.83679)
+
+[node name="Player" parent="." instance=ExtResource("1_uhjjb")]
