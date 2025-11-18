@@ -20,6 +20,11 @@ window/size/viewport_height=450
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+player=""
+enemies=""
+
 [input]
 
 move_left={
@@ -56,6 +61,7 @@ move_down={
 2d_physics/layer_5="PlayerHitbox"
 2d_physics/layer_6="EnemyHitbox"
 2d_physics/layer_7="Environment"
+2d_physics/layer_8="Swarm"
 
 [rendering]
 

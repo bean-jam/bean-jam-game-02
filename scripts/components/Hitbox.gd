@@ -17,4 +17,7 @@ func setup(source: BaseEntity, base_damage: int) -> void:
 # don't cause damage to each other. Collision layers have been named so hover 
 # over the numbers to see the names.
 func _on_area_entered(area: HurtboxComponent) -> void:
-	area.take_hit(damage, source_entity)
+	print("Hitbox overlapped with:", area)
+	if area is HurtboxComponent:
+		print("It *is* a HurtboxComponent")
+		area.take_hit(damage, source_entity)
