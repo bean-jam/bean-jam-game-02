@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0k2gbqh2h8dj"
-path="res://.godot/imported/BEANBOT.png-4f4ec93e4aa9c071168c227d3f7ade9e.ctex"
+uid="uid://c7or60g2626ol"
+path="res://.godot/imported/bean-jam-tilesheet1.png-2bf2359d1480fbc48653bb72b39dad45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BEANBOT.png"
-dest_files=["res://.godot/imported/BEANBOT.png-4f4ec93e4aa9c071168c227d3f7ade9e.ctex"]
+source_file="res://assets/tilesheets/bean-jam-tilesheet1.png"
+dest_files=["res://.godot/imported/bean-jam-tilesheet1.png-2bf2359d1480fbc48653bb72b39dad45.ctex"]
 
 [params]
 
