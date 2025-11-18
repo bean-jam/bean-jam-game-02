@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_0e1n8")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_05t60")
-max_hp = 30
+max_hp = 20
 metadata/_custom_type_script = "uid://dfwhxucfyl7dh"
 
 [node name="StatsComponent" type="Node" parent="."]
