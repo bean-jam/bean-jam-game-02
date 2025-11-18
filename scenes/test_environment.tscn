@@ -13,17 +13,19 @@ script = ExtResource("5_5qein")
 [node name="TileMap" parent="." instance=ExtResource("2_b3mux")]
 position = Vector2(139.78247, 80.83679)
 
-[node name="Player" parent="." instance=ExtResource("1_uhjjb")]
-position = Vector2(399, 217)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="BasicEnemySpawner" parent="." instance=ExtResource("3_5qein")]
-position = Vector2(790, -30)
+position = Vector2(843, -76)
 enemy_scene = ExtResource("3_nbain")
 spawn_interval = 5.0
 
 [node name="FlyingEnemySpawner" parent="." instance=ExtResource("3_5qein")]
+position = Vector2(-129, -91)
 enemy_scene = ExtResource("4_8ya4j")
 enemy_amount = 20
-spawn_interval = 10.0
+spawn_interval = 15.0
+
+[node name="Player" parent="." instance=ExtResource("1_uhjjb")]
+position = Vector2(385, 219)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+metadata/_edit_lock_ = true

@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwjc4fhdhypuq"]
+[gd_scene load_steps=10 format=3 uid="uid://cwjc4fhdhypuq"]
 
 [ext_resource type="Script" uid="uid://d2rjmxl2igwol" path="res://scripts/entities/BasicEnemy.gd" id="1_ms2v3"]
 [ext_resource type="Script" uid="uid://dfwhxucfyl7dh" path="res://scripts/components/Health.gd" id="2_hdbr1"]
 [ext_resource type="Script" uid="uid://dd2p35ymhy7hf" path="res://scripts/components/Stats.gd" id="3_h68hl"]
 [ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_2k6q3"]
+[ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="5_1bv63"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="5_ttdkb"]
 [ext_resource type="Script" uid="uid://bi64c68updv82" path="res://scripts/controllers/BasicEnemyController.gd" id="6_5aa28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms2v3"]
-radius = 12.5
+radius = 10.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7edt6"]
 size = Vector2(15, 8)
@@ -55,13 +56,19 @@ metadata/_custom_type_script = "uid://cvfnnuycn760h"
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_7edt6")
 
-[node name="FlyingEnemyHitbox" type="Area2D" parent="."]
+[node name="MeleeWeapon" type="Node2D" parent="." node_paths=PackedStringArray("holder")]
+script = ExtResource("5_1bv63")
+hitbox_duration = 0.4
+holder = NodePath("..")
+metadata/_custom_type_script = "uid://dshi8vv2cubep"
+
+[node name="HitboxComponent" type="Area2D" parent="MeleeWeapon"]
 collision_layer = 32
 collision_mask = 4
 script = ExtResource("5_ttdkb")
 metadata/_custom_type_script = "uid://qwppn725hg0q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyingEnemyHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeWeapon/HitboxComponent"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_7edt6")
 
@@ -70,4 +77,4 @@ script = ExtResource("6_5aa28")
 entity = NodePath("..")
 metadata/_custom_type_script = "uid://bi64c68updv82"
 
-[connection signal="area_entered" from="FlyingEnemyHitbox" to="FlyingEnemyHitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="MeleeWeapon/HitboxComponent" to="MeleeWeapon/HitboxComponent" method="_on_area_entered"]
