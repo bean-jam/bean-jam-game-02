@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://chm2ning6074k"]
 
-[ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/StaffWeapon.gd" id="1_euh6y"]
+[ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="1_euh6y"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="1_ylq8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_euh6y"]
-size = Vector2(112, 20)
+size = Vector2(112, 46)
 
 [node name="StaffWeapon" type="Node2D"]
 script = ExtResource("1_euh6y")
@@ -15,13 +15,13 @@ offset_top = -2.0
 offset_right = 56.0
 offset_bottom = 3.0
 
-[node name="StaffHitbox" type="Area2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_ylq8n")
 metadata/_custom_type_script = "uid://qwppn725hg0q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaffHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_euh6y")
 
-[connection signal="area_entered" from="StaffHitbox" to="StaffHitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
