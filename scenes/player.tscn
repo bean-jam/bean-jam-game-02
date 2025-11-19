@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dn2176ik10uai"]
+[gd_scene load_steps=24 format=3 uid="uid://dn2176ik10uai"]
 
 [ext_resource type="Script" uid="uid://pmge878f65bj" path="res://scripts/entities/Player.gd" id="1_fjrip"]
 [ext_resource type="Script" uid="uid://dfwhxucfyl7dh" path="res://scripts/components/Health.gd" id="2_fjrip"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://dv1f2hhg42lgb" path="res://assets/spritesheets/Player/player_idle_spritesheet.png" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://chm2ning6074k" path="res://scenes/staff_weapon.tscn" id="6_fjrip"]
-[ext_resource type="Script" uid="uid://ci6f4sbgw7bvm" path="res://scripts/controllers/PlayerController.gd" id="6_y4r1p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdg3f"]
 radius = 16.0
@@ -162,8 +161,3 @@ autoplay = "idle"
 
 [node name="StaffWeapon" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("6_fjrip")]
 holder = NodePath("..")
-
-[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("entity")]
-script = ExtResource("6_y4r1p")
-entity = NodePath("..")
-metadata/_custom_type_script = "uid://ci6f4sbgw7bvm"

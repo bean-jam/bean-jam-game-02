@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6p74ioq1ase6"]
+[gd_scene load_steps=8 format=3 uid="uid://b6p74ioq1ase6"]
 
 [ext_resource type="Script" uid="uid://d2rjmxl2igwol" path="res://scripts/entities/BasicEnemy.gd" id="1_ve544"]
 [ext_resource type="Script" uid="uid://dfwhxucfyl7dh" path="res://scripts/components/Health.gd" id="2_05t60"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_hhlmc"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="5_05t60"]
 [ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="5_qhw0p"]
-[ext_resource type="Script" uid="uid://bi64c68updv82" path="res://scripts/controllers/BasicEnemyController.gd" id="6_ve544"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e1n8"]
 size = Vector2(36, 62)
@@ -65,10 +64,5 @@ metadata/_custom_type_script = "uid://qwppn725hg0q"
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleeWeapon/HitboxComponent"]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_0e1n8")
-
-[node name="BasicEnemyController" type="Node" parent="." node_paths=PackedStringArray("entity")]
-script = ExtResource("6_ve544")
-entity = NodePath("..")
-metadata/_custom_type_script = "uid://bi64c68updv82"
 
 [connection signal="area_entered" from="MeleeWeapon/HitboxComponent" to="MeleeWeapon/HitboxComponent" method="_on_area_entered"]

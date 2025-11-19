@@ -12,3 +12,8 @@ func _on_died() -> void:
 	print("Player died!")
 	# SignalBus.player_died.emit() (Once signal bus is set up)
 	# Later: pause game, show game over, etc.
+
+# Handle player specific movement, physics process happens on entity class
+func _process(delta: float) -> void:
+	var input_vector := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	move_input = input_vector
