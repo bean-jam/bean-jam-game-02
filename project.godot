@@ -13,6 +13,11 @@ config_version=5
 config/name="bean-jam-game-02"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+GameManager="*res://scripts/core/GameManager.gd"
+SignalBus="*res://scripts/core/SignalBus.gd"
+
 [display]
 
 window/size/viewport_width=800

@@ -1,6 +1,6 @@
 extends BaseEntity
-class_name BasicEnemy
-# The BasicEnemy class listens to the signals from it's health component
+class_name FlyingEnemy
+# The FLyingEnemy class will eventually be different from BasicEnemy
 
 var target: Node2D  
 
@@ -13,7 +13,7 @@ func _ready() -> void:
 		target = get_tree().get_first_node_in_group("player")
 
 func _on_health_changed(current: int, max_hp: int) -> void:
-	print("Enemy HP:", current, "/", max_hp)
+	print("Flying Enemy HP:", current, "/", max_hp)
 
 func _on_died() -> void:
 	SignalBus.enemy_died.emit(self)
