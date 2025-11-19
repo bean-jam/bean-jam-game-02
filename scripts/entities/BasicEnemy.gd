@@ -16,7 +16,7 @@ func _on_health_changed(current: int, max_hp: int) -> void:
 	print("Enemy HP:", current, "/", max_hp)
 
 func _on_died() -> void:
-	print("Enemy died!")
+	SignalBus.enemy_died.emit(self)
 	queue_free()
 
 func _process(delta: float) -> void:

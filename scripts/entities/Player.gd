@@ -9,8 +9,7 @@ func _on_health_changed(current: int, max_hp: int) -> void:
 	print("Player HP:", current, "/", max_hp)
 
 func _on_died() -> void:
-	print("Player died!")
-	# SignalBus.player_died.emit() (Once signal bus is set up)
+	SignalBus.player_died.emit() 
 	# Later: pause game, show game over, etc.
 
 # Handle player specific movement, physics process happens on entity class
