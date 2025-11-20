@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://chm2ning6074k"]
+[gd_scene load_steps=4 format=3 uid="uid://60e2uawykk44"]
 
 [ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="1_euh6y"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="1_ylq8n"]
