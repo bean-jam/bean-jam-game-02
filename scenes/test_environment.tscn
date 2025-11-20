@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf4omirjfnkkm"]
 
-[ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/player.tscn" id="1_uhjjb"]
-[ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/tile_map.tscn" id="2_b3mux"]
-[ext_resource type="PackedScene" uid="uid://dg0m6vpinum5i" path="res://scenes/enemy_spawner.tscn" id="3_5qein"]
-[ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/basic_enemy.tscn" id="3_nbain"]
-[ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/flying_enemy.tscn" id="4_8ya4j"]
+[ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/entities/player.tscn" id="1_uhjjb"]
+[ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/maps/test_map.tscn" id="2_b3mux"]
+[ext_resource type="PackedScene" uid="uid://dg0m6vpinum5i" path="res://scenes/entities/enemy_spawner.tscn" id="3_5qein"]
+[ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/entities/basic_enemy.tscn" id="3_nbain"]
+[ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/entities/flying_enemy.tscn" id="4_8ya4j"]
 [ext_resource type="Script" uid="uid://d07bvdi6reqsd" path="res://scripts/test_environment.gd" id="5_5qein"]
 
 [node name="TestEnvironment" type="Node2D"]

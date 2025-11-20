@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ihd5vhyliof"]
+
+[ext_resource type="Script" uid="uid://gctgqskw5xvt" path="res://scripts/core/CampScene.gd" id="1_glmsd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2uki"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 28.43
+angle_min = 1.0728835e-05
+angle_max = 289.0
+gravity = Vector3(0, -98, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 22.449997
+scale_max = 4.0
+color = Color(1, 0, 0, 1)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.13999997
+turbulence_noise_strength = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_xdqsc"]
+font_size = 100
+
+[node name="CampScene" type="Node2D"]
+script = ExtResource("1_glmsd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 800.0
+offset_bottom = 450.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 611.0
+offset_top = 388.0
+offset_right = 777.0
+offset_bottom = 430.0
+text = "START NEXT WAVE"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(393, 239)
+amount = 16
+lifetime = 1.5999999999999999
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_u2uki")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 337.0
+offset_top = 145.0
+offset_right = 562.0
+offset_bottom = 282.0
+text = "🔥"
+label_settings = SubResource("LabelSettings_xdqsc")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

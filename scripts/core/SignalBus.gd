@@ -3,6 +3,7 @@ extends Node
 # Game flow
 signal wave_started(wave_index: int)
 signal wave_completed(wave_index: int)
+signal next_wave_started
 
 # Entities
 signal enemy_died(enemy: Node)    # emit(self) from the enemy
