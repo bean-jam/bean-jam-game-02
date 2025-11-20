@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgpkrgdjyahuy"]
+
+[ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/maps/test_map.tscn" id="1_62fw4"]
+[ext_resource type="PackedScene" uid="uid://dg0m6vpinum5i" path="res://scenes/entities/enemy_spawner.tscn" id="2_l3ov5"]
+[ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/entities/basic_enemy.tscn" id="3_xownf"]
+[ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/entities/flying_enemy.tscn" id="4_rxxfm"]
+[ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/entities/player.tscn" id="5_4tgbv"]
+
+[node name="BattleScene" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_62fw4")]
+position = Vector2(139.78247, 80.83679)
+
+[node name="BasicEnemySpawner" parent="." instance=ExtResource("2_l3ov5")]
+position = Vector2(843, -76)
+enemy_scene = ExtResource("3_xownf")
+spawn_interval = 5.0
+
+[node name="FlyingEnemySpawner" parent="." instance=ExtResource("2_l3ov5")]
+position = Vector2(-129, -91)
+enemy_scene = ExtResource("4_rxxfm")
+enemy_amount = 10
+spawn_interval = 30.0
+
+[node name="Player" parent="." instance=ExtResource("5_4tgbv")]
+position = Vector2(385, 219)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+metadata/_edit_lock_ = true
