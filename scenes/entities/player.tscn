@@ -160,4 +160,5 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="StaffWeapon" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("6_fjrip")]
+position = Vector2(-7, -1)
 holder = NodePath("..")
