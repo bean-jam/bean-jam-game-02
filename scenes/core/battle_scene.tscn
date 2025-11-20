@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgpkrgdjyahuy"]
+[gd_scene load_steps=12 format=3 uid="uid://bgpkrgdjyahuy"]
 
 [ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/maps/test_map.tscn" id="1_62fw4"]
 [ext_resource type="Script" uid="uid://dajsn4c82rtqg" path="res://scripts/core/BattleScene.gd" id="1_xownf"]
@@ -6,23 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/entities/basic_enemy.tscn" id="3_xownf"]
 [ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/entities/flying_enemy.tscn" id="4_rxxfm"]
 [ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/entities/player.tscn" id="5_4tgbv"]
+[ext_resource type="Script" uid="uid://dt2jlqvkptcsi" path="res://scripts/UI/HUD.gd" id="7_xownf"]
 
-[sub_resource type="GDScript" id="GDScript_l3ov5"]
-script/source = "extends Control
+[sub_resource type="Gradient" id="Gradient_xownf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
 
-@onready var bar = $HPBar
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxxfm"]
+gradient = SubResource("Gradient_xownf")
 
-func set_max_health(max_hp: int) -> void:
-	bar.max_value = max_hp
-	# ensure current value doesn't exceed max
-	if bar.value > max_hp:
-		bar.value = max_hp
+[sub_resource type="Gradient" id="Gradient_4tgbv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 1, 0, 1)
 
-func set_health(new_hp: int, max_hp: int) -> void:
-	bar.max_value = max_hp
-	bar.value = clamp(new_hp, 0, max_hp)
-	
-"
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvdft"]
+gradient = SubResource("Gradient_4tgbv")
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_xownf")
@@ -51,10 +49,12 @@ metadata/_edit_lock_ = true
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = SubResource("GDScript_l3ov5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_xownf")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD"]
 layout_mode = 0
@@ -62,5 +62,30 @@ offset_left = 654.0
 offset_top = 11.0
 offset_right = 784.0
 offset_bottom = 115.0
+
+[node name="HpBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 27.0
+value = 100.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_rxxfm")
+texture_progress = SubResource("GradientTexture1D_bvdft")
 
 [editable path="Player"]
