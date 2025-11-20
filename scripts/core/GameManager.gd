@@ -24,6 +24,7 @@ func _ready() -> void:
 func start_new_run() -> void:
 	current_wave = starting_wave
 	_start_wave(current_wave)
+	go_to_battle()
 
 
 func _start_wave(wave_index: int) -> void:

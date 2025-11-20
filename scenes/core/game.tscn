@@ -6,6 +6,5 @@
 [node name="Game" type="Node2D"]
 
 [node name="CampScene" parent="." instance=ExtResource("2_lnu2h")]
-visible = false
 
 [node name="BattleScene" parent="." instance=ExtResource("1_yqjtg")]

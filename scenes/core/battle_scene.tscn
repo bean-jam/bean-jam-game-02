@@ -1,12 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgpkrgdjyahuy"]
+[gd_scene load_steps=8 format=3 uid="uid://bgpkrgdjyahuy"]
 
 [ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/maps/test_map.tscn" id="1_62fw4"]
+[ext_resource type="Script" uid="uid://dajsn4c82rtqg" path="res://scripts/core/BattleScene.gd" id="1_xownf"]
 [ext_resource type="PackedScene" uid="uid://dg0m6vpinum5i" path="res://scenes/entities/enemy_spawner.tscn" id="2_l3ov5"]
 [ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/entities/basic_enemy.tscn" id="3_xownf"]
 [ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/entities/flying_enemy.tscn" id="4_rxxfm"]
 [ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/entities/player.tscn" id="5_4tgbv"]
 
+[sub_resource type="GDScript" id="GDScript_l3ov5"]
+script/source = "extends Control
+
+@onready var bar = $HPBar
+
+func set_max_health(max_hp: int) -> void:
+	bar.max_value = max_hp
+	# ensure current value doesn't exceed max
+	if bar.value > max_hp:
+		bar.value = max_hp
+
+func set_health(new_hp: int, max_hp: int) -> void:
+	bar.max_value = max_hp
+	bar.value = clamp(new_hp, 0, max_hp)
+	
+"
+
 [node name="BattleScene" type="Node2D"]
+script = ExtResource("1_xownf")
 
 [node name="TileMap" parent="." instance=ExtResource("1_62fw4")]
 position = Vector2(139.78247, 80.83679)
@@ -27,3 +46,21 @@ position = Vector2(385, 219)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_l3ov5")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 654.0
+offset_top = 11.0
+offset_right = 784.0
+offset_bottom = 115.0
+
+[editable path="Player"]
