@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://chm2ning6074k"]
 
-[ext_resource type="Script" path="res://StaffWeapon.gd" id="1_c7cll"]
+[ext_resource type="Script" uid="uid://cvkbd36va1ic0" path="res://StaffWeapon.gd" id="1_c7cll"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="1_ylq8n"]
-[ext_resource type="Texture2D" path="res://assets/spritesheets/Player/STAFF_SWEEP_01.png" id="2_c7cll"]
+[ext_resource type="Texture2D" uid="uid://cbrgsiqp4evsp" path="res://assets/spritesheets/Player/STAFF_SWEEP_01.png" id="2_c7cll"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fu00"]
 atlas = ExtResource("2_c7cll")

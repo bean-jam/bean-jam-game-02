@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dd2p35ymhy7hf" path="res://scripts/components/Stats.gd" id="3_smehm"]
 [ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://dv1f2hhg42lgb" path="res://assets/spritesheets/Player/player_idle_spritesheet.png" id="5_fjrip"]
-[ext_resource type="PackedScene" uid="uid://chm2ning6074k" path="res://scenes/staff_weapon.tscn" id="6_fjrip"]
+[ext_resource type="PackedScene" uid="uid://chm2ning6074k" path="res://scenes/weapons/staff_weapon.tscn" id="6_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdg3f"]
 radius = 16.0
