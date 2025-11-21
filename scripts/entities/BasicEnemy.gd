@@ -5,6 +5,7 @@ class_name BasicEnemy
 var target: Node2D  
 
 func _ready() -> void:
+	super()
 	health.health_changed.connect(_on_health_changed)
 	health.died.connect(_on_died)
 	

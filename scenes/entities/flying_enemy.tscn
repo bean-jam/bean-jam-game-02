@@ -28,7 +28,7 @@ shape = SubResource("CircleShape2D_ms2v3")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_hdbr1")
-max_hp = 10
+max_hp = 50
 metadata/_custom_type_script = "uid://dfwhxucfyl7dh"
 
 [node name="StatsComponent" type="Node" parent="."]
