@@ -28,4 +28,3 @@ In the game node, everything is made out of scenes. Make your own scene and
 edit within the scene. For example, player.tscn gets edited in it's own 
 environment, tested in a test environment, and then it gets imported into 
 the world node when it is ready. This will hopefully reduce conflicts where we are making changes in independent files.
-

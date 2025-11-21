@@ -4,6 +4,8 @@ class_name BaseEntity
 
 # Adjust the smoothness of movement and knockback effects
 @export_range(0.0, 1.0) var lerp_amount: float = 0.2
+
+# Knockback settings
 @export var knockback: bool = true
 @export var knockback_speed = 600.0
 @export var knockback_amount = 0.13
@@ -37,13 +39,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = velocity.lerp(target_velocity, lerp_amount)
 	move_and_slide()
-		
+
 func _on_entity_damaged(amount: int):
+	# Knockback
 	if knockback == true:
 		knockback_timer = knockback_amount
 		knockback_cooldown = knockback_amount * 2
 		knockback_velocity = (-move_input.normalized()) * knockback_speed
-	
 
 	
 		
