@@ -4,8 +4,9 @@ extends Node
 @export var base_enemies_to_kill: int = 10
 @export var enemies_per_wave_increase: int = 3
 
-var current_wave: int = 0
 # Timer system will be added as well
+var current_wave: int = 0
+# These variables are also used in the HUD
 var enemies_killed_this_wave: int = 0
 var enemies_to_kill_this_wave: int = 0
 
@@ -34,7 +35,8 @@ func _start_wave(wave_index: int) -> void:
 
 	
 	SignalBus.emit_signal("wave_started", current_wave)
-	print("GameManager: started wave", current_wave, "- need kills:", enemies_to_kill_this_wave)
+	SignalBus.emit_signal("enemy_total_changed", enemies_killed_this_wave, enemies_to_kill_this_wave)
+
 	
 	
 	
@@ -46,7 +48,7 @@ func _start_next_wave() -> void:
 
 func _on_enemy_died(enemy: Node) -> void:
 	enemies_killed_this_wave += 1
-	print("GameManager: enemy died: ", enemies_killed_this_wave, "/", enemies_to_kill_this_wave)
+	SignalBus.emit_signal("enemy_total_changed", enemies_killed_this_wave, enemies_to_kill_this_wave)
 
 	if enemies_killed_this_wave >= enemies_to_kill_this_wave:
 		_on_wave_completed()
