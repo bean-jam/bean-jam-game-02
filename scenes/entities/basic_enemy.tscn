@@ -1,14 +1,79 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6p74ioq1ase6"]
+[gd_scene load_steps=16 format=3 uid="uid://b6p74ioq1ase6"]
 
 [ext_resource type="Script" uid="uid://d2rjmxl2igwol" path="res://scripts/entities/BasicEnemy.gd" id="1_ve544"]
 [ext_resource type="Script" uid="uid://dfwhxucfyl7dh" path="res://scripts/components/Health.gd" id="2_05t60"]
+[ext_resource type="Shader" uid="uid://c4gbm5d8slk3f" path="res://shaders/hit_flash.gdshader" id="2_bdw8x"]
 [ext_resource type="Script" uid="uid://dd2p35ymhy7hf" path="res://scripts/components/Stats.gd" id="3_v2wxn"]
 [ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_hhlmc"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="5_05t60"]
 [ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="5_qhw0p"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdg8x"]
+resource_local_to_scene = true
+shader = ExtResource("2_bdw8x")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Gradient" id="Gradient_bdw8x"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fdg8x"]
+gradient = SubResource("Gradient_bdw8x")
+
+[sub_resource type="Animation" id="Animation_ss7kx"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dnykm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5rqy"]
+_data = {
+&"RESET": SubResource("Animation_dnykm"),
+&"hit_flash": SubResource("Animation_ss7kx")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e1n8"]
 size = Vector2(36, 62)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bdw8x"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 42.859997
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 32.649998
+tangential_accel_min = -31.29
+tangential_accel_max = 33.329998
+scale_max = 4.0
+hue_variation_min = -0.20000002
+hue_variation_max = -2.2351742e-08
+turbulence_enabled = true
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -18,12 +83,16 @@ script = ExtResource("1_ve544")
 lerp_amount = 0.05
 metadata/_custom_type_script = "uid://cf7tf1fqn60bn"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
-offset_bottom = 32.0
-color = Color(1, 0, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fdg8x")
+position = Vector2(-2, 0)
+scale = Vector2(0.1484375, 62)
+texture = SubResource("GradientTexture1D_fdg8x")
+
+[node name="HitFlash" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_c5rqy")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
@@ -64,5 +133,14 @@ metadata/_custom_type_script = "uid://qwppn725hg0q"
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleeWeapon/HitboxComponent"]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_0e1n8")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 5.0
+speed_scale = 5.0
+explosiveness = 1.0
+trail_lifetime = 0.09999999999999999
+process_material = SubResource("ParticleProcessMaterial_bdw8x")
 
 [connection signal="area_entered" from="MeleeWeapon/HitboxComponent" to="MeleeWeapon/HitboxComponent" method="_on_area_entered"]

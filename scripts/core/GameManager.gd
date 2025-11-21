@@ -1,8 +1,8 @@
 extends Node
 
 @export var starting_wave: int = 1
-@export var base_enemies_to_kill: int = 10
-@export var enemies_per_wave_increase: int = 3
+@export var base_enemies_to_kill: int = 20
+@export var enemies_per_wave_increase: int = 10
 
 # Timer system will be added as well
 var current_wave: int = 0
@@ -25,7 +25,8 @@ func _ready() -> void:
 func start_new_run() -> void:
 	current_wave = starting_wave
 	_start_wave(current_wave)
-	go_to_battle()
+	# Wait until next idle frame
+	call_deferred("go_to_battle")
 
 
 func _start_wave(wave_index: int) -> void:
@@ -43,7 +44,8 @@ func _start_wave(wave_index: int) -> void:
 func _start_next_wave() -> void:
 	current_wave += 1
 	_start_wave(current_wave)
-	go_to_battle()
+	# Wait until next idle frame
+	call_deferred("go_to_battle")
 	
 
 func _on_enemy_died(enemy: Node) -> void:
@@ -58,8 +60,8 @@ func _on_wave_completed() -> void:
 	print("GameManager: wave completed", current_wave)
 	SignalBus.emit_signal("wave_completed", current_wave)
 	
-	# Possibly increment current_wave here
-	go_to_camp()
+	# Wait until next idle frame
+	call_deferred("go_to_camp")
 
 
 # Camp and Battle scene loaders
