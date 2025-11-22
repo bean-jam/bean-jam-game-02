@@ -84,4 +84,8 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_rxxfm")
 texture_progress = SubResource("GradientTexture1D_bvdft")
 
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+pitch_scale = 0.9
+
 [editable path="Player"]

@@ -91,6 +91,6 @@ shape = SubResource("RectangleShape2D_euh6y")
 
 [node name="StaffSwingSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4fu00")
-volume_db = -15.0
+volume_db = -20.0
 
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
