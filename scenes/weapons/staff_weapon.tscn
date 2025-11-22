@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://chm2ning6074k"]
+[gd_scene load_steps=15 format=3 uid="uid://chm2ning6074k"]
 
 [ext_resource type="Script" uid="uid://cvkbd36va1ic0" path="res://scripts/weapons/StaffWeapon.gd" id="1_c7cll"]
 [ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="1_ylq8n"]
 [ext_resource type="Texture2D" uid="uid://cbrgsiqp4evsp" path="res://assets/spritesheets/Player/STAFF_SWEEP_01.png" id="2_c7cll"]
+[ext_resource type="AudioStream" uid="uid://t3fhiifbw27i" path="res://assets/sfx/Swish.wav" id="4_4fu00"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fu00"]
 atlas = ExtResource("2_c7cll")
@@ -87,5 +88,9 @@ metadata/_custom_type_script = "uid://qwppn725hg0q"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(23, 6.5)
 shape = SubResource("RectangleShape2D_euh6y")
+
+[node name="StaffSwingSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4fu00")
+volume_db = -15.0
 
 [connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]

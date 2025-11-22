@@ -13,6 +13,8 @@ var enemies_to_kill_this_wave: int = 0
 var scrap: int = 0
 
 func _ready() -> void:
+	# Intialise RNG
+	randomize()
 	# Signal on player death for game over logic
 	SignalBus.player_died.connect(_on_player_died)
 	# Signal on enemy death for wave logic
