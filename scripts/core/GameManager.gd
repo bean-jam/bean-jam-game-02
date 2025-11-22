@@ -15,6 +15,8 @@ var scrap: int = 0
 func _ready() -> void:
 	# Intialise RNG
 	randomize()
+	# Signal for start of new game from main menu
+	SignalBus.new_game_started.connect(_start_game)
 	# Signal on player death for game over logic
 	SignalBus.player_died.connect(_on_player_died)
 	# Signal on enemy death for wave logic
@@ -22,8 +24,11 @@ func _ready() -> void:
 	# Signal from camp scene button to start next wave
 	SignalBus.next_wave_started.connect(_start_next_wave)
 	
-	start_new_run()
 
+
+func _start_game() -> void:
+		start_new_run()
+	
 func start_new_run() -> void:
 	current_wave = starting_wave
 	_start_wave(current_wave)

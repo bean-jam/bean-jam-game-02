@@ -32,7 +32,7 @@ func _perform_attack() -> void:
 	hitbox.setup(holder, holder.stats.attack_damage)
 	
 	# Randomise the pitch of the swing sound each hit
-	staff_swing_sfx.pitch_scale = randf_range(0.80, 2.0)
+	staff_swing_sfx.pitch_scale = randf_range(0.9, 1.5)
 	
 	# Perform the staff swing and enable hitbox for duration of animation
 	staff_animation.play("swing")
