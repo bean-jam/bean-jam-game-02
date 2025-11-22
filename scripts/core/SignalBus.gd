@@ -1,6 +1,7 @@
 extends Node
 
 # Game flow
+signal new_game_started
 signal wave_started(wave_index: int)
 signal wave_completed(wave_index: int)
 signal next_wave_started
