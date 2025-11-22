@@ -5,8 +5,10 @@ class_name StaffWeapon
 
 @export var holder: BaseEntity
 
-@onready var staff_animation = $AnimatedSprite2D
 @onready var hitbox: HitboxComponent = $HitboxComponent
+@onready var staff_animation = $AnimatedSprite2D
+@onready var staff_swing_sfx = $StaffSwingSFX
+var rng = RandomNumberGenerator.new()
 var cooldown: float = 0.0
 
 
@@ -25,12 +27,16 @@ func _physics_process(delta: float) -> void:
 
 func _perform_attack() -> void:
 	cooldown = holder.stats.attack_cooldown
-
+	
 	# Set damage from owner's stats
 	hitbox.setup(holder, holder.stats.attack_damage)
 	
+	# Randomise the pitch of the swing sound each hit
+	staff_swing_sfx.pitch_scale = randf_range(0.80, 2.0)
+	
 	# Perform the staff swing and enable hitbox for duration of animation
 	staff_animation.play("swing")
+	staff_swing_sfx.play()
 	hitbox.monitoring = true
 	await staff_animation.animation_finished
 	hitbox.monitoring = false
