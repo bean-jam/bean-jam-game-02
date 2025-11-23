@@ -6,11 +6,25 @@ Might be worth expermimenting with 768×432px or 960×540px to change the sprite
 whilst keeping pixels crisp
 
 ## Design Structure:
-I am attempting to make the game as modular as possible using composition and 
+We are attempting to make the game as modular as possible using composition and 
 inheritance where needed to structure the code. In the project settings there 
 are two important scripts which autoload on the starting of the game: 
 	- GameManager 
 	- SignalBus
+	
+The game uses a wave timer system and when the wave timer is complete you must
+kill the remaining spawned enemies to end the wave. We use Godot's grouping
+system to add enemies to the "enemies" group on spawn and then remove them when 
+they die. Using this group allows us to easily query the length of the group which
+we need when we display the enemies remaining once the timer has finished.
+ 
+We use a series of signals from the signal bus which allows the GameManager and HUD 
+to communicate with each other and send and recieve data. The GameManager uses a 
+timer to tick down the seconds and send this to the HUD. When this is complete a 
+signal switches the wave_timer_done boolean flag in the GameManager and the
+EnemySpawner instances. This then influences the behaviour such as stopping the 
+spawning of enemies and starting the enemies remaining count. The HUD can just
+use the signal to hide and show the necessary information.
 
 ## GameManager:
 	There is a GameManager script that controls the flow of the game and manages
