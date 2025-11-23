@@ -1,6 +1,6 @@
 extends Control
 
-@onready var bar = $TextureProgressBar
+@onready var bar = $HPBar
 @onready var enemy_count = $PanelContainer/EnemyCount
 
 func _ready() -> void:
