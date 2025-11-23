@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://6ihd5vhyliof"]
 
 [ext_resource type="Script" uid="uid://gctgqskw5xvt" path="res://scripts/core/CampScene.gd" id="1_glmsd"]
-[ext_resource type="AudioStream" uid="uid://dadjuw5764ur5" path="res://assets/music/Robot - Atmosphere.wav" id="2_e0wu7"]
+[ext_resource type="AudioStream" uid="uid://dp2d8vwdayvj4" path="res://assets/music/asleep.wav" id="2_rlpn1"]
 [ext_resource type="AudioStream" uid="uid://dwyv74auv75qq" path="res://assets/sfx/Fire.wav" id="3_rlpn1"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2uki"]
@@ -52,13 +52,13 @@ text = "🔥"
 label_settings = SubResource("LabelSettings_xdqsc")
 
 [node name="Camp Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_e0wu7")
-volume_db = -1.651
+stream = ExtResource("2_rlpn1")
+volume_db = -10.0
 autoplay = true
 
 [node name="Camp Fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rlpn1")
-volume_db = -7.153
+volume_db = -5.0
 autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

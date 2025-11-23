@@ -166,7 +166,7 @@ text = "Press to start a new run"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_e12ky")
-volume_db = -19.905
+volume_db = -10.0
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/MainMenu/VBoxContainer/Button" to="CanvasLayer/Control" method="_on_button_pressed"]
