@@ -4,6 +4,8 @@ class_name BaseEnemy
 # Excludes movement control for example.
 # The references to other nodes could be improved and made more modular.
 
+@onready var body = $CollisionShape2D
+@onready var hurtbox = $HurtboxComponent/CollisionShape2D
 # Change to animated once we are using animations 
 @onready var hit_flash = $Sprite2D/HitFlash
 @onready var death_particles = $DeathParticles
@@ -12,16 +14,15 @@ func _ready() -> void:
 	super()
 	health.health_changed.connect(_on_health_changed)
 	health.died.connect(_on_died)
-	
 
 func _on_health_changed(current: int, max_hp: int) -> void:
 	print("Enemy HP:", current, "/", max_hp)
 
 func _on_died() -> void:
 	# stop collision immediately so the corpse doesn't keep colliding
+	body.set_deferred("disabled", true)
 	stats.set_deferred("move_speed", 0.0)
-	$CollisionShape2D.set_deferred("disabled", true)
-	$HurtboxComponent/CollisionShape2D.set_deferred("disabled", true)
+	hurtbox.set_deferred("disabled", true)
 	if death_particles:
 		death_particles.emitting = true
 	

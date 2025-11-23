@@ -9,7 +9,7 @@ func _ready():
 	# Find the player to move towards
 	if target == null:
 		target = get_tree().get_first_node_in_group("player")
-
+		
 
 func _process(delta: float) -> void:
 	# Move towards the player
