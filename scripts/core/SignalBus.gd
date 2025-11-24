@@ -1,4 +1,8 @@
 extends Node
+## The SignalBus manages all global signals and allows the GameManager to control
+## the flow of the game.
+## Any signals that need access on multiple nodes in different places should be 
+## placed here.
 
 ## Game flow
 signal new_game_started
