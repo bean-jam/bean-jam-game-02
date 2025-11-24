@@ -17,7 +17,6 @@ func _ready():
 
 ## Gets the direction of the player and updates move_input every frame 
 func _process(delta: float) -> void:
-	# Move towards the player
 	if not target:
 		return
 	
