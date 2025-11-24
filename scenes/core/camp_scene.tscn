@@ -53,12 +53,12 @@ label_settings = SubResource("LabelSettings_xdqsc")
 
 [node name="Camp Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rlpn1")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
 
 [node name="Camp Fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rlpn1")
-volume_db = -5.0
+volume_db = -8.0
 autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
