@@ -27,7 +27,7 @@ func _perform_attack() -> void:
 	cooldown = holder.stats.attack_cooldown
 
 	# Set damage from owner's stats
-	hitbox.setup(holder, holder.stats.attack_damage)
+	hitbox.setup(holder.stats.attack_damage)
 	
 	# Enable hitbox for a short timed window
 	_enable_hitbox_for(hitbox_duration)

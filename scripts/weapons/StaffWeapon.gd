@@ -29,7 +29,7 @@ func _perform_attack() -> void:
 	cooldown = holder.stats.attack_cooldown
 	
 	# Set damage from owner's stats
-	hitbox.setup(holder, holder.stats.attack_damage)
+	hitbox.setup(holder.stats.attack_damage)
 	
 	# Randomise the pitch of the swing sound each hit
 	staff_swing_sfx.pitch_scale = randf_range(0.9, 1.5)

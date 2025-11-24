@@ -1,15 +1,19 @@
 extends Area2D
 class_name HurtboxComponent
+## HurtboxComponent attaches to a entity that takes damage to when it overlaps 
+## with a HitboxComponent on another scene. 
+## When using Hurtboxs and Hitboxs, ensure you set the collision layers
+## in the inspector correctly
 
+## Assign a HealthComponent to this Hurtbox
 @export var health: HealthComponent
 
-# The error means that the Health node in the entity scene hasn't been assigned
-# in the inspector. Drag and drop the health node into the health section 
-# in the inspector.
+## Checks a HealthComponent has been assigned and throws an error
 func _ready() -> void:
 	if health == null:
 		push_error("Hurtbox.health is not assigned!")
 
-func take_hit(amount: int, source = null) -> void:
+## Call apply_damage on the correct HealthComponent
+func take_hit(amount: int) -> void:
 	if health:
 		health.apply_damage(amount)
