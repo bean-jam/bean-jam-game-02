@@ -1,8 +1,8 @@
 extends Node
 
-@export var starting_wave: int = 1
-@export var base_enemies_to_kill: int = 20
-@export var enemies_per_wave_increase: int = 10
+var starting_wave: int = 1
+var base_enemies_to_kill: int = 20
+var enemies_per_wave_increase: int = 10
 
 # Timer system will be added as well
 var current_wave: int = 0
@@ -93,7 +93,6 @@ func _on_enemy_died(enemy: Node) -> void:
 	# General enemy death is handled in the BaseEnemy class.
 	# This just handles the post timer enemy logic.
 	if wave_timer_done:
-		enemy.remove_from_group("enemies")
 		enemies_left = get_tree().get_nodes_in_group("enemies").size()
 		SignalBus.emit_signal("enemy_total_changed", enemies_left)
 		if enemies_left <= 0:

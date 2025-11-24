@@ -51,7 +51,6 @@ func _on_spawn_timer_timeout() -> void:
 			enemy.global_position = global_position + offset
 
 			get_parent().add_child(enemy)
-			enemy.add_to_group("enemies")
 			alive_count += 1
 
 			# When each enemy dies, decrement the alive count
