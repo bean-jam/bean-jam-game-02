@@ -1,0 +1,142 @@
+[gd_scene load_steps=16 format=3 uid="uid://btjsdub1mx86d"]
+
+[ext_resource type="Script" uid="uid://d2rjmxl2igwol" path="res://scripts/entities/BasicEnemy.gd" id="1_5ypy8"]
+[ext_resource type="Script" uid="uid://dfwhxucfyl7dh" path="res://scripts/components/Health.gd" id="2_eub16"]
+[ext_resource type="Material" uid="uid://d3osdpo6tp2lo" path="res://resources/hit_flash_material.tres" id="2_ucwo4"]
+[ext_resource type="Script" uid="uid://dd2p35ymhy7hf" path="res://scripts/components/Stats.gd" id="3_fywpr"]
+[ext_resource type="Script" uid="uid://cvfnnuycn760h" path="res://scripts/components/Hurtbox.gd" id="4_5ypy8"]
+[ext_resource type="Script" uid="uid://dshi8vv2cubep" path="res://scripts/weapons/MeleeWeapon.gd" id="5_ucwo4"]
+[ext_resource type="Script" uid="uid://qwppn725hg0q" path="res://scripts/components/Hitbox.gd" id="6_e64se"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5ypy8"]
+
+[sub_resource type="Animation" id="Animation_dnykm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ss7kx"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5rqy"]
+_data = {
+&"RESET": SubResource("Animation_dnykm"),
+&"hit_flash": SubResource("Animation_ss7kx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucwo4"]
+size = Vector2(164, 262)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwq5c"]
+size = Vector2(163, 263)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mllec"]
+radius = 110.81967
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cg3m5"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 42.859997
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 32.649998
+tangential_accel_min = -31.29
+tangential_accel_max = 33.329998
+scale_max = 4.0
+hue_variation_min = -0.20000002
+hue_variation_max = -2.2351742e-08
+turbulence_enabled = true
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 66
+motion_mode = 1
+script = ExtResource("1_5ypy8")
+metadata/_custom_type_script = "uid://ct6b2nps1nfot"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_ucwo4")
+position = Vector2(72.25, 121.74999)
+scale = Vector2(145.5, 244.49998)
+texture = SubResource("PlaceholderTexture2D_5ypy8")
+
+[node name="HitFlash" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_c5rqy")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 121)
+shape = SubResource("RectangleShape2D_ucwo4")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_eub16")
+max_hp = 30
+metadata/_custom_type_script = "uid://dfwhxucfyl7dh"
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("3_fywpr")
+base_move_speed = 150.0
+base_attack_damage = 30
+base_attack_cooldown = 5.0
+metadata/_custom_type_script = "uid://dd2p35ymhy7hf"
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("4_5ypy8")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cvfnnuycn760h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(71.5, 121.5)
+shape = SubResource("RectangleShape2D_rwq5c")
+debug_color = Color(0.8919176, 0.067125745, 0.7669055, 0.41960785)
+
+[node name="MeleeWeapon" type="Node2D" parent="."]
+script = ExtResource("5_ucwo4")
+metadata/_custom_type_script = "uid://dshi8vv2cubep"
+
+[node name="HitboxComponent" type="Area2D" parent="MeleeWeapon"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("6_e64se")
+metadata/_custom_type_script = "uid://qwppn725hg0q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeWeapon/HitboxComponent"]
+position = Vector2(73, 127)
+shape = SubResource("CircleShape2D_mllec")
+
+[node name="DeathParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 5.0
+speed_scale = 5.0
+explosiveness = 1.0
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_cg3m5")
+
+[connection signal="area_entered" from="MeleeWeapon/HitboxComponent" to="MeleeWeapon/HitboxComponent" method="_on_area_entered"]

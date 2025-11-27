@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgpkrgdjyahuy"]
+[gd_scene load_steps=10 format=3 uid="uid://bgpkrgdjyahuy"]
 
 [ext_resource type="PackedScene" uid="uid://bsve3fipshplr" path="res://scenes/maps/test_map.tscn" id="1_62fw4"]
 [ext_resource type="Script" uid="uid://dajsn4c82rtqg" path="res://scripts/core/BattleScene.gd" id="1_xownf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6p74ioq1ase6" path="res://scenes/entities/basic_enemy.tscn" id="3_xownf"]
 [ext_resource type="PackedScene" uid="uid://cwjc4fhdhypuq" path="res://scenes/entities/flying_enemy.tscn" id="4_rxxfm"]
 [ext_resource type="PackedScene" uid="uid://dn2176ik10uai" path="res://scenes/entities/player.tscn" id="5_4tgbv"]
+[ext_resource type="PackedScene" uid="uid://btjsdub1mx86d" path="res://scenes/entities/big_enemy.tscn" id="7_4tgbv"]
 [ext_resource type="PackedScene" uid="uid://vrxdigu3ysfq" path="res://scenes/UI/HUD.tscn" id="7_xownf"]
 [ext_resource type="AudioStream" uid="uid://dadjuw5764ur5" path="res://assets/music/Robot - Atmosphere.wav" id="8_rxxfm"]
 
@@ -31,6 +32,9 @@ position = Vector2(385, 219)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 metadata/_edit_lock_ = true
+
+[node name="BaseEnemy" parent="." instance=ExtResource("7_4tgbv")]
+position = Vector2(805, 527)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
